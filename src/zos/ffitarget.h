@@ -39,6 +39,8 @@
 typedef unsigned long long     ffi_arg;
 typedef signed long long       ffi_sarg;
 
+typedef void (void_fn_type)(void);
+
 typedef enum ffi_abi {
   FFI_FIRST_ABI = 0,
   FFI_STANDARD,
@@ -60,6 +62,10 @@ typedef enum ffi_abi {
   unsigned nfixedargs;          \
   void *call_fn;                \
   void *closure_fn
+
+#define FFI_EXTRA_CLOSURE_FIELDS    \
+  void *fn_env;                     \
+  void *fn_code
 
 #define FFI_TARGET_SPECIFIC_VARIADIC
 

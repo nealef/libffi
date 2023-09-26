@@ -804,7 +804,7 @@ void ffi_call(ffi_cif *cif,
 /* Allocate a chunk of memory holding size bytes. 
    This returns a pointer to the writable address, and sets *code to the corresponding executable address.
    size should be sufficient to hold a ffi_closure object. */
-ffi_closure *ffi_closure_alloc (size_t size, void **code)
+FFI_API void *ffi_closure_alloc (size_t size, void **code)
 {
   size = sizeof(ffi_closure);
   ffi_closure *result = (ffi_closure *)malloc(size);
@@ -816,7 +816,7 @@ ffi_closure *ffi_closure_alloc (size_t size, void **code)
 /* Free memory allocated using ffi_closure_alloc. The argument is the writable address that was returned.
    Once you have allocated the memory for a closure, you must construct a ffi_cif describing the function call. 
    Finally you can prepare the closure function:*/
-void ffi_closure_free (void *writable)
+FFI_API void ffi_closure_free (void *writable)
 {
   free(writable);
 }
@@ -843,7 +843,8 @@ args      A vector of pointers to memory holding the arguments to the function.
 user_data The same user_data that was passed to ffi_prep_closure_loc.
 */
 
-ffi_status ffi_prep_closure_loc (ffi_closure *closure, ffi_cif *cif, ffi_closure_fun_fn *fun, void *user_data, void *codeloc)
+FFI_API ffi_status ffi_prep_closure_loc (ffi_closure *closure, ffi_cif *cif, void (*fun)(ffi_cif*,void*,void**,void*), 
+                                         void *user_data, void *codeloc)
 {
   if (cif->closure_fn == NULL) {
     ffi_printf("No ffi call function could be found or created\n");

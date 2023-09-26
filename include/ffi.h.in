@@ -343,6 +343,9 @@ typedef struct {
   ffi_cif   *cif;
   void     (*fun)(ffi_cif*,void*,void**,void*);
   void      *user_data;
+#ifdef FFI_EXTRA_CLOSURE_FIELDS
+  FFI_EXTRA_CLOSURE_FIELDS;
+#endif
 #if defined(_MSC_VER) && defined(_M_IX86)
   void      *padding;
 #endif
