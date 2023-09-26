@@ -169,7 +169,7 @@ typedef signed int   SINT64 __attribute__((__mode__(__DI__)));
 
 typedef float FLOAT32;
 
-#ifndef __GNUC__
+#if !defined(__GNUC__) && !defined(__MVS__) && !defined(__VM__)
 #define __builtin_expect(x, expected_value) (x)
 #endif
 #define LIKELY(x)    __builtin_expect(!!(x),1)

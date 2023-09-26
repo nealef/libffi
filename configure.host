@@ -115,6 +115,11 @@ case "${host}" in
 	fi
 	;;
 
+  i370-ibm-openedition)
+    TARGET=ZOS; TARGETDIR=zos
+    SOURCES="ffi.c"
+    ;;
+
   i?86-*-* | x86_64-*-* | amd64-*)
 	TARGETDIR=x86
 	if test $ac_cv_sizeof_size_t = 4; then

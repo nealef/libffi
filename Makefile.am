@@ -97,7 +97,8 @@ EXTRA_libffi_la_SOURCES = src/aarch64/ffi.c src/aarch64/sysv.S		\
 	src/x86/ffiw64.c src/x86/win64.S src/x86/ffi64.c		\
 	src/x86/unix64.S src/x86/sysv_intel.S src/x86/win64_intel.S	\
 	src/xtensa/ffi.c src/xtensa/sysv.S src/kvx/ffi.c		\
-	src/kvx/sysv.S src/loongarch64/ffi.c src/loongarch64/sysv.S
+	src/kvx/sysv.S src/loongarch64/ffi.c src/loongarch64/sysv.S \
+	src/zos/ffi.c src/zos/ffi_test.c           
 
 TARGET_OBJ = @TARGET_OBJ@
 libffi_la_LIBADD = $(TARGET_OBJ)
